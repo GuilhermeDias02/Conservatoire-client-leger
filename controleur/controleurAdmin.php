@@ -19,14 +19,14 @@ switch($choix){
         include ('vue/formAdmin.php');
         break;
     case 'verif':
-        $rep = Admin::verifier($login, md5($mdp));
+        /*$rep = Admin::verifier($login, md5($mdp));
 
         if ($rep == true){
             $_SESSION['autorisation'] = "OK";
-            include ('vue/accueil.php');
+            */include ('vue/accueil.php');/*
         }
         else{
             include ('vue/echec.php');
-        }
-        break;
+        }*/
+    break;
 }
