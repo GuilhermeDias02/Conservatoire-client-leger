@@ -5,9 +5,17 @@
 
 #page{
     display: flex;
+    /* position: relative; */
     justify-content: center;
+    flex-direction: column;
+}
+
+#titre{
+    margin: auto;
 }
 
 #logo{
-    /* margin-left: 50%; */
+    max-height: 297px;
+    max-width: 297px;
+    margin: auto;
 }
