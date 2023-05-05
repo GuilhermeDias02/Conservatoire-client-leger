@@ -1,3 +1,13 @@
 *{
-    background-color: gray;
+    /* background-color: gray; */
+    outline: red 2px;
+}
+
+#page{
+    display: flex;
+    justify-content: center;
+}
+
+#logo{
+    /* margin-left: 50%; */
 }

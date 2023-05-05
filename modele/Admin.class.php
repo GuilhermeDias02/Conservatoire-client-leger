@@ -6,7 +6,7 @@ class Admin{
     public static function verifier($login, $mdp){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM admin WHERE login=:login AND mdp=:mdp");
 
-        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'produit');
+        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'admin');
 
         $req -> bindParam('login', $login);
         $req -> bindParam('mdp', $mdp);

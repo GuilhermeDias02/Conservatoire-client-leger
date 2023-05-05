@@ -16,7 +16,7 @@ if (isset($_GET['choix'])){
 
 switch($choix){
     case 'formulaire':
-        include ('vue/formAdmin.php');
+        // include ('vue/formAdmin.php');
         break;
     case 'verif':
         /*$rep = Admin::verifier($login, md5($mdp));
@@ -28,5 +28,5 @@ switch($choix){
         else{
             include ('vue/echec.php');
         }*/
-    break;
+        break;
 }

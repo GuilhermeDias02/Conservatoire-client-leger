@@ -1,17 +1,17 @@
 <?php
 include "vue/header.php";
 
+if (isset($_SESSION['autorisation'])){
+    if($_SESSION['autorisation'] == 'OK'){
+        $uc = 'admin';
+    }
+}
+
 if(empty($_GET["uc"])){
     $uc = "login";
 }
 else{
     $uc = $_GET["uc"];
-}
-
-if (isset($_SESSION['autorisation'])){
-    if($_SESSION['autorisation'] == 'OK'){
-        $uc = 'admin';
-    }
 }
 
 switch($uc){
