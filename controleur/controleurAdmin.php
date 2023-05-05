@@ -6,9 +6,9 @@ if(isset($_POST['login']) && isset($_POST['mdp'])){
     $login = $_POST['login'];
     $mdp = $_POST['mdp'];
 }
-else{
-    echo "probleme post";
-}
+// else{
+//     echo "probleme post";
+// }
 
 if (isset($_GET['choix'])){
     $choix = $_GET['choix'];
@@ -22,11 +22,20 @@ switch($choix){
         /*$rep = Admin::verifier($login, md5($mdp));
 
         if ($rep == true){
-            $_SESSION['autorisation'] = "OK";
-            */include ('vue/accueil.php');/*
-        }
+            $_SESSION['autorisation'] = "OK";*/
+            include ('vue/headerAccueil.php');
+            include ('vue/accueil.php');
+        /*}
         else{
             include ('vue/echec.php');
         }*/
+        break;
+    case 'accueilEleve':
+        include ('vue/headerAccueil.php');
+        include ('vue/eleve.php');
+
+        break;
+    case 'ajoutEleve':
+        
         break;
 }

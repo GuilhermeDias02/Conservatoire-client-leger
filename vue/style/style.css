@@ -3,6 +3,10 @@
     outline: red 2px;
 }
 
+.contenu{
+    padding: 20px;
+}
+
 #page{
     display: flex;
     /* position: relative; */
@@ -18,4 +22,8 @@
     max-height: 297px;
     max-width: 297px;
     margin: auto;
+}
+
+form > div{
+    max-width: 300px;
 }
