@@ -1,5 +1,5 @@
 <?php
-class Eleve{
+class Prof{
 
     private int $id;
     private string $nom;
@@ -7,25 +7,25 @@ class Eleve{
     private string $tel;
     private string $mail;
     private string $adresse;
-    private string $niveau;
-    private string $bourse;
+    private string $instrument;
+    private int $salaire;
 
     
 
-    public static function insertEleve(int $unId, int $niveau, int $bourse){
+    // public static function insertEleve(int $unId, int $niveau, int $bourse){
 
-        $req = MonPdo::getInstance() -> prepare("INSERT INTO eleve (ideleve, niveau, bourse) VALUES (:id, :niveau, :bourse)");
+    //     $req = MonPdo::getInstance() -> prepare("INSERT INTO eleve (ideleve, niveau, bourse) VALUES (:id, :niveau, :bourse)");
 
-        $req -> bindParam('id', $unId, PDO::PARAM_INT);
-        $req -> bindParam('niveau', $niveau, PDO::PARAM_INT);
-        $req -> bindParam('bourse', $bourse, PDO::PARAM_INT);
+    //     $req -> bindParam('id', $unId, PDO::PARAM_INT);
+    //     $req -> bindParam('niveau', $niveau, PDO::PARAM_INT);
+    //     $req -> bindParam('bourse', $bourse, PDO::PARAM_INT);
 
-        $req -> execute();
-    }
+    //     $req -> execute();
+    // }
 
     public static function afficherTous(){
-        $req = MonPdo::getInstance() -> prepare("SELECT * FROM veleve");
-        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'eleve');
+        $req = MonPdo::getInstance() -> prepare("SELECT * FROM vprof");
+        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'prof');
         $req -> execute();
         $lesResultats = $req -> fetchAll();
 
@@ -75,11 +75,15 @@ class Eleve{
 	/**
 	 * @return 
 	 */
-	public function getNiveau(): string {
-		return $this->niveau;
+	public function getInstrument(): string {
+		return $this->instrument;
 	}
 
-    public function getBourse(): string {
-		return $this->bourse;
+    /**
+	 * @return 
+	 */
+	public function getSalaire(): string {
+		return $this->salaire;
 	}
+
 }

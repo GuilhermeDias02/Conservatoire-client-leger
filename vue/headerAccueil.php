@@ -16,7 +16,7 @@
                     <a class="nav-link active" aria-current="page" href="index.php?uc=admin&choix=accueilEleve">Nouvel adhérent</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">Inscrire à un cours</a>
+                    <a class="nav-link active" aria-current="page" href="index.php?uc=admin&choix=accueilInscription">Inscrire à un cours</a>
                 </li>
             </ul>
             <!-- <form class="d-flex" role="search" action="index.php?uc=bonbons&action=recherche" method="POST">

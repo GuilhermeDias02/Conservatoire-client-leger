@@ -18,6 +18,7 @@ switch($choix){
     case 'formulaire':
         // include ('vue/formAdmin.php');
         break;
+
     case 'verif':
         /*$rep = Admin::verifier($login, md5($mdp));
 
@@ -30,11 +31,13 @@ switch($choix){
             include ('vue/echec.php');
         }*/
         break;
+
     case 'accueilEleve':
         include ('vue/headerAccueil.php');
         include ('vue/eleve.php');
 
         break;
+
     case 'ajoutEleve':
         include 'modele/Eleve.class.php';
         include 'modele/Personne.class.php';
@@ -65,4 +68,21 @@ switch($choix){
             include 'vue/echec.php';
         }
         break;
+    
+    case 'accueilInscription':
+        include 'modele/Eleve.class.php';
+        include 'modele/Prof.class.php';
+
+        $lesEleves = Eleve::afficherTous();
+        $lesProfs = Prof::afficherTous();
+
+        include 'vue/headerAccueil.php';
+        include 'vue/inscription.php';
+        
+        break;
+
+    case 'inscription':
+
+        break;
+
 }
