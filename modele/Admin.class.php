@@ -1,5 +1,4 @@
 <?php
-include "monPDO.php";
 class Admin{
     
     

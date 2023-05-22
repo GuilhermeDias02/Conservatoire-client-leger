@@ -1,30 +1,14 @@
 <?php
-include "monPDO.php";
 class Eleve{
-    
-    
-    public static function verifier($login, $mdp){
-        $req = MonPdo::getInstance() -> prepare("SELECT * FROM admin WHERE login=:login AND mdp=:mdp");
+    public static function insertEleve(int $unId, int $niveau, int $bourse){
 
-        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'admin');
+        $req = MonPdo::getInstance() -> prepare("INSERT INTO eleve (ideleve, niveau, bourse) VALUES (:id, :niveau, :bourse)");
 
-        $req -> bindParam('login', $login);
-        $req -> bindParam('mdp', $mdp);
+        $req -> bindParam('id', $unId, PDO::PARAM_INT);
+        $req -> bindParam('niveau', $niveau, PDO::PARAM_INT);
+        $req -> bindParam('bourse', $bourse, PDO::PARAM_INT);
 
         $req -> execute();
-
-        $leResultat = $req -> fetchAll();
-
-        $nb_lignes = count($leResultat);
-
-        if ($nb_lignes == 0){
-            $rep = false;
-        }
-        else{
-            $rep = true;
-        }
-
-        return $rep;
     }
 
     public static function deconnexion(){

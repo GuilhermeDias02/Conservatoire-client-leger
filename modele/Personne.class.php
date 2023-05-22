@@ -1,29 +1,26 @@
 <?php
-include "monPDO.php";
 class Personne{
-    
-    
-    public static function verifier($login, $mdp){
-        $req = MonPdo::getInstance() -> prepare("SELECT * FROM admin WHERE login=:login AND mdp=:mdp");
+    public static function insertPersonne(string $nom, string $prenom, string $tel, string $mail, string $adresse){
 
-        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'admin');
+        $req = MonPdo::getInstance() -> prepare("INSERT INTO personne (nom, prenom, tel, mail, adresse) VALUES (:nom, :prenom, :tel, :mail, :adresse)");
 
-        $req -> bindParam('login', $login);
-        $req -> bindParam('mdp', $mdp);
+        $req -> bindParam('nom', $nom, PDO::PARAM_STR);
+        $req -> bindParam('prenom', $prenom, PDO::PARAM_STR);
+        $req -> bindParam('tel', $tel, PDO::PARAM_STR);
+        $req -> bindParam('mail', $mail, PDO::PARAM_STR);
+        $req -> bindParam('adresse', $adresse, PDO::PARAM_STR);
 
         $req -> execute();
 
-        $leResultat = $req -> fetchAll();
+    }
 
-        $nb_lignes = count($leResultat);
+    public static function getLastId(): int{
 
-        if ($nb_lignes == 0){
-            $rep = false;
-        }
-        else{
-            $rep = true;
-        }
+        $id = 0;
 
-        return $rep;
+        $id = MonPdo::getInstance() -> lastInsertId();
+
+        return ($id);
+
     }
 }
