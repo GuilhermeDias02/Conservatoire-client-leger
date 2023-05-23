@@ -34,6 +34,6 @@
                 ?>
             </select>
         </div>
-        <button /*type="submit"*/ class="btn btn-primary">Confirmer</button>
+        <button type="submit" class="btn btn-primary">Confirmer</button>
     </form>
 </div>

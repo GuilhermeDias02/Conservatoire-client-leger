@@ -10,8 +10,6 @@ class Eleve{
     private string $niveau;
     private string $bourse;
 
-    
-
     public static function insertEleve(int $unId, int $niveau, int $bourse){
 
         $req = MonPdo::getInstance() -> prepare("INSERT INTO eleve (ideleve, niveau, bourse) VALUES (:id, :niveau, :bourse)");

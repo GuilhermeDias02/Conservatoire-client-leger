@@ -82,7 +82,46 @@ switch($choix){
         break;
 
     case 'inscription':
+        include 'modele/Seance.class.php';
+
+        if (isset($_POST['prof']) && isset($_POST['eleve'])){
+            $hprof = $_POST['prof']; //pas de problème de post
+            $heleve = $_POST['eleve']; //pas de problème de post
+
+            $lesSeances = Seance::afficherTous();
+            // $lesSeances = Seance::afficherProf($hprof);
+
+            foreach($lesSeances as $uneSeance){
+                echo $uneSeance->getTranche();
+            }
+
+            include 'vue/headerAccueil.php';
+            include 'vue/inscription2.php';
+        }
 
         break;
+    case 'inscription2':
+        include 'modele/Inscription.class.php';
+        include 'modele/Seance.class.php';
+        
+        if (isset($_POST['prof']) && isset($_POST['eleve']) && isset($_POST['seance'])){
+            $prof = $_POST['prof'];
+            $eleve = $_POST['eleve'];
+            $seance = $_POST['seance'];
 
+            $capacite = Seance::afficherCapacite($seance);
+
+            if (Inscription::verifierCapacite($seance, $capacite)){
+                Inscription::insertInscription($prof, $eleve, $seance);
+
+                include 'vue/reussite.php';
+            }
+            else{
+                include 'vue/echec.php';
+            }
+            
+        }
+
+        break;
+    
 }

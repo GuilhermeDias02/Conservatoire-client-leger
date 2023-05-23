@@ -22,6 +22,7 @@
     max-height: 297px;
     max-width: 297px;
     margin: auto;
+    mix-blend-mode: color-burn;
 }
 
 form > div{
