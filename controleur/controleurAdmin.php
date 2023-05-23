@@ -91,9 +91,9 @@ switch($choix){
             $lesSeances = Seance::afficherTous();
             // $lesSeances = Seance::afficherProf($hprof);
 
-            foreach($lesSeances as $uneSeance){
-                echo $uneSeance->getTranche();
-            }
+            // foreach($lesSeances as $uneSeance){
+            //     echo $uneSeance->getTranche();
+            // }
 
             include 'vue/headerAccueil.php';
             include 'vue/inscription2.php';
@@ -109,7 +109,7 @@ switch($choix){
             $eleve = $_POST['eleve'];
             $seance = $_POST['seance'];
 
-            $capacite = Seance::afficherCapacite($seance);
+            $capacite = Seance::afficherCapacite($seance); // pas de problème
 
             if (Inscription::verifierCapacite($seance, $capacite)){
                 Inscription::insertInscription($prof, $eleve, $seance);

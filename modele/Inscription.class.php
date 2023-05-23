@@ -8,7 +8,7 @@ class Inscription{
 
     public static function insertInscription(int $idProf, int $idEleve, int $numSeance){
 
-        $req = MonPdo::getInstance() -> prepare("INSERT INTO inscription (idprof, ideleve, numseance, dateinscription) VALUES (:idprof, :niveau, :bourse, DATE_FORMAT(NOW(),'%Y-%m-%d'))");
+        $req = MonPdo::getInstance() -> prepare("INSERT INTO inscription (idprof, ideleve, numseance, dateinscription) VALUES (:idprof, :ideleve, :numseance, DATE_FORMAT(NOW(),'%Y-%m-%d'))");
 
         $req -> bindParam('idprof', $idProf, PDO::PARAM_INT);
         $req -> bindParam('ideleve', $idEleve, PDO::PARAM_INT);
@@ -22,9 +22,9 @@ class Inscription{
         $req -> bindParam('numseance', $unNumSeance, PDO::PARAM_INT);
         // $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'seance');
         $req -> execute();
-        $lesResultats = $req -> fetchAll();
+        $lesResultats = $req -> fetchColumn();
 
-        if ($lesResultats[0] < $capacite){
+        if ($lesResultats < $capacite){
             return true;
         }
         else{

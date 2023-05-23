@@ -49,7 +49,7 @@ class Seance{
         $lesResultats = $req -> fetchAll();
 
         foreach($lesResultats as $uneSeance){
-            $capacité = $uneSeance->getCapacite();
+            $capacité = $uneSeance->CAPACITE;
         }
 
         return $capacité;
