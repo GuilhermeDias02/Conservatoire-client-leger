@@ -103,6 +103,7 @@ switch($choix){
     case 'inscription2':
         include 'modele/Inscription.class.php';
         include 'modele/Seance.class.php';
+        include 'modele/Eleve.class.php';
         
         if (isset($_POST['prof']) && isset($_POST['eleve']) && isset($_POST['seance'])){
             $prof = $_POST['prof'];
@@ -111,7 +112,7 @@ switch($choix){
 
             $capacite = Seance::afficherCapacite($seance); // pas de problème
 
-            if (Inscription::verifierCapacite($seance, $capacite) && $eleve->NIVEAU == Seance::afficherNiveau($seance)){
+            if (Inscription::verifierCapacite($seance, $capacite) && (Eleve::afficherUnEleve($eleve))->getNiveau() == Seance::afficherNiveau($seance)){
                 Inscription::insertInscription($prof, $eleve, $seance);
 
                 include 'vue/reussite.php';

@@ -30,6 +30,20 @@ class Eleve{
         return $lesResultats;
     }
 
+    public static function afficherUnEleve(int $unIdEleve){
+        $req = MonPdo::getInstance() -> prepare("SELECT * FROM veleve where id = :ideleve");
+        $req -> bindParam('ideleve', $unIdEleve, PDO::PARAM_INT);
+        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'eleve');
+        $req -> execute();
+        $lesResultats = $req -> fetchAll();
+
+        foreach($lesResultats as $unEleve){
+            $eleve = $unEleve;
+        }
+
+        return $eleve;
+    }
+
     public static function deconnexion(){
         session_unset();
         //session_destroy();

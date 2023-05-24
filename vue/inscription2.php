@@ -1,7 +1,7 @@
 <div class="contenu">
     <h1>Inscrire un adhérent à un cours:</h1>
     <br>
-    <?php echo $lesSeances[0]->TRANCHE;?>
+    <!-- <?php echo $lesSeances[0]->TRANCHE;?> -->
     <form action="index.php?uc=admin&choix=inscription2" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="seance" class="form-label">Un cours</label>
@@ -9,7 +9,7 @@
                 <option selected></option>
                 <?php
                     foreach($lesSeances as $uneSeance){
-                        echo '<option value="'.$uneSeance->NUMSEANCE.'">'.$uneSeance->TRANCHE.' '.$uneSeance->JOUR.', '.$uneSeance->CAPACITE.'</option>';
+                        echo '<option value="'.$uneSeance->NUMSEANCE.'">'.$uneSeance->TRANCHE.' '.$uneSeance->JOUR.', capacité:'.$uneSeance->CAPACITE.', niveau:'.$uneSeance->NIVEAU.'</option>';
                     }
                 ?>
             </select>
