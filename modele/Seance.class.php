@@ -49,10 +49,24 @@ class Seance{
         $lesResultats = $req -> fetchAll();
 
         foreach($lesResultats as $uneSeance){
-            $capacité = $uneSeance->CAPACITE;
+            $capacite = $uneSeance->CAPACITE;
         }
 
-        return $capacité;
+        return $capacite;
+    }
+
+    public static function afficherNiveau(int $unNumSeance){
+        $req = MonPdo::getInstance() -> prepare("SELECT * FROM seance WHERE numseance = :numseance");
+        $req -> bindParam('numseance', $unNumSeance, PDO::PARAM_INT);
+        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'seance');
+        $req -> execute();
+        $lesResultats = $req -> fetchAll();
+
+        foreach($lesResultats as $uneSeance){
+            $niveau = $uneSeance->NIVEAU;
+        }
+
+        return $niveau;
     }
 
 	/**

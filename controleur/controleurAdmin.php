@@ -111,7 +111,7 @@ switch($choix){
 
             $capacite = Seance::afficherCapacite($seance); // pas de problème
 
-            if (Inscription::verifierCapacite($seance, $capacite)){
+            if (Inscription::verifierCapacite($seance, $capacite) && $eleve->NIVEAU == Seance::afficherNiveau($seance)){
                 Inscription::insertInscription($prof, $eleve, $seance);
 
                 include 'vue/reussite.php';
