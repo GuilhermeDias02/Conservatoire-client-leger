@@ -2,10 +2,6 @@
 
 include "modele/Admin.class.php";
 
-if(isset($_POST['login']) && isset($_POST['mdp'])){
-    $login = $_POST['login'];
-    $mdp = $_POST['mdp'];
-}
 // else{
 //     echo "probleme post";
 // }
@@ -15,23 +11,32 @@ if (isset($_GET['choix'])){
 }
 
 switch($choix){
-    case 'formulaire':
-        // include ('vue/formAdmin.php');
-        break;
-
     case 'verif':
         include 'modele/Login.class.php';
 
-        $rep = Login::verifLogin($login, md5($mdp), Login::recupJson());
+        if(isset($_POST['login']) && isset($_POST['mdp'])){
+            $login = $_POST['login'];
+            $mdp = $_POST['mdp'];
 
-        if ($rep == true){
-            $_SESSION['autorisation'] = "OK";
-            include ('vue/headerAccueil.php');
-            include ('vue/accueil.php');
+            
+            $rep = Login::verifLogin($login, md5($mdp), Login::recupJson());
+
+            if ($rep == true){
+                $_SESSION['autorisation'] = 'OK';
+                include ('vue/headerAccueil.php');
+                include ('vue/accueil.php');
+            }
+            else{
+                include ('vue/echecLogin.php');
+            }
         }
-        else{
-            include ('vue/echec.php');
-        }
+
+        break;
+    
+    case 'accueil':
+        include ('vue/headerAccueil.php');
+        include ('vue/accueil.php');
+
         break;
 
     case 'accueilEleve':

@@ -1,3 +1,3 @@
 <h1>Echec, reéssayez !</h1>
 </br>
-<a href="../Conservatoire/">Reéssayer</a>
+<a href="../Conservatoire/index.php?uc=admin&choix=accueil">Reéssayer</a>

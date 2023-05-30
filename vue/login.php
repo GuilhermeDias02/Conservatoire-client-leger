@@ -16,6 +16,3 @@
         <div class="col-5"></div>
     </div>
 </div>
-
-
-<!-- login GuilhermeAdmin mdp= "" hachage md5 -->

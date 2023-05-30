@@ -2,10 +2,8 @@
 include "vue/header.php";
 include "modele/monPdo.php";
 
-if (isset($_SESSION['autorisation'])){
-    if($_SESSION['autorisation'] == 'OK'){
-        $uc = 'admin';
-    }
+if($_SESSION['autorisation'] == 'OK'){
+    $uc = 'admin';
 }
 
 if(empty($_GET["uc"])){
