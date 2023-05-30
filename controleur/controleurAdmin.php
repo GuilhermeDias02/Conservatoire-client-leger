@@ -20,16 +20,18 @@ switch($choix){
         break;
 
     case 'verif':
-        /*$rep = Admin::verifier($login, md5($mdp));
+        include 'modele/Login.class.php';
+
+        $rep = Login::verifLogin($login, md5($mdp), Login::recupJson());
 
         if ($rep == true){
-            $_SESSION['autorisation'] = "OK";*/
+            $_SESSION['autorisation'] = "OK";
             include ('vue/headerAccueil.php');
             include ('vue/accueil.php');
-        /*}
+        }
         else{
             include ('vue/echec.php');
-        }*/
+        }
         break;
 
     case 'accueilEleve':
