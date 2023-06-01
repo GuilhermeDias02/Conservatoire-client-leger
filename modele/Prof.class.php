@@ -22,7 +22,12 @@ class Prof{
 
     //     $req -> execute();
     // }
-
+    
+    /**
+     * Affiche tous les professeurs
+     *
+     * @return array
+     */
     public static function afficherTous(){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM vprof");
         $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'prof');

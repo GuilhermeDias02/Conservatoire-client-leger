@@ -9,7 +9,15 @@ class Eleve{
     private string $adresse;
     private string $niveau;
     private string $bourse;
-
+    
+    /**
+     * Ajoute un élève
+     *
+     * @param  int $unId
+     * @param  int $niveau
+     * @param  int $bourse
+     * @return void
+     */
     public static function insertEleve(int $unId, int $niveau, int $bourse){
 
         $req = MonPdo::getInstance() -> prepare("INSERT INTO eleve (ideleve, niveau, bourse) VALUES (:id, :niveau, :bourse)");
@@ -20,7 +28,12 @@ class Eleve{
 
         $req -> execute();
     }
-
+    
+    /**
+     * Affiche tous les élèves
+     *
+     * @return array
+     */
     public static function afficherTous(){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM veleve");
         $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'eleve');
@@ -29,7 +42,13 @@ class Eleve{
 
         return $lesResultats;
     }
-
+    
+    /**
+     * Affiche un élève en fonction de l'id
+     *
+     * @param  int $unIdEleve
+     * @return mixed
+     */
     public static function afficherUnEleve(int $unIdEleve){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM veleve where id = :ideleve");
         $req -> bindParam('ideleve', $unIdEleve, PDO::PARAM_INT);

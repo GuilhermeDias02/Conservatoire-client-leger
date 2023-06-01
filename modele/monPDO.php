@@ -8,19 +8,29 @@ class MonPdo
     private static $mdp='';
     private static $monPdo;
     private static $unPdo = null;
-
-    //	Constructeur privé, crée l'instance de PDO qui sera sollicitée
-    //	pour toutes les méthodes de la classe
+    
+    /**
+     * Constructeur privé, crée l'instance de PDO qui sera sollicitée pour toutes les méthodes de la classe
+     *
+     * @return void
+     */
     private function __construct()
     {
         MonPdo::$unPdo = new PDO(MonPdo::$serveur.';'.MonPdo::$bdd, MonPdo::$user, MonPdo::$mdp);
         MonPdo::$unPdo->query("SET CHARACTER SET utf8");
         MonPdo::$unPdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
+        
+    /**
+     * __destruct
+     *
+     * @return void
+     */
     public function __destruct()
     { 
         MonPdo::$unPdo = null;
     }
+    
     /**
     *	Fonction statique qui cree l'unique instance de la classe
     * Appel : $instanceMonPdo = MonPdo::getMonPdo();

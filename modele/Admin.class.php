@@ -1,7 +1,13 @@
 <?php
 class Admin{
-    
-    
+        
+    /**
+     * Vérifie que la personne peut se connecter
+     *
+     * @param  string $login
+     * @param  string $mdp
+     * @return bool
+     */
     public static function verifier($login, $mdp){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM admin WHERE login=:login AND mdp=:mdp");
 
@@ -26,6 +32,11 @@ class Admin{
         return $rep;
     }
 
+    /**
+     * Supprime la session
+     *
+     * @return void
+     */
     public static function deconnexion(){
         session_unset();
         //session_destroy();

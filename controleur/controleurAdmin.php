@@ -11,6 +11,7 @@ if (isset($_GET['choix'])){
 }
 
 switch($choix){
+    // pour savoir si l'utilisateur est bien connecté
     case 'verif':
         include 'modele/Login.class.php';
 
@@ -33,18 +34,21 @@ switch($choix){
 
         break;
     
+    // affiche l'accueil
     case 'accueil':
         include ('vue/headerAccueil.php');
         include ('vue/accueil.php');
 
         break;
 
+    // affiche la vue d'ajout d'adhérent
     case 'accueilEleve':
         include ('vue/headerAccueil.php');
         include ('vue/eleve.php');
 
         break;
 
+    // ajoute le nouvel adhérent
     case 'ajoutEleve':
         include 'modele/Eleve.class.php';
         include 'modele/Personne.class.php';
@@ -76,6 +80,7 @@ switch($choix){
         }
         break;
     
+    // vue d'inscription à un cours (prof et élève)
     case 'accueilInscription':
         include 'modele/Eleve.class.php';
         include 'modele/Prof.class.php';
@@ -88,6 +93,7 @@ switch($choix){
         
         break;
 
+    // vue d'inscription à un cours (séance)
     case 'inscription':
         include 'modele/Seance.class.php';
 
@@ -107,6 +113,8 @@ switch($choix){
         }
 
         break;
+
+    // inscription de l'élève à un cours
     case 'inscription2':
         include 'modele/Inscription.class.php';
         include 'modele/Seance.class.php';
@@ -129,7 +137,5 @@ switch($choix){
             }
             
         }
-
         break;
-    
 }

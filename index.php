@@ -6,6 +6,7 @@ if($_SESSION['autorisation'] == 'OK'){
     $uc = 'admin';
 }
 
+// Si rien n'est encore défini alors uc = login
 if(empty($_GET["uc"])){
     $uc = "login";
 }
@@ -14,9 +15,11 @@ else{
 }
 
 switch($uc){
+    // vue de connexion
     case "login":
         include "vue/login.php";
         break;
+    // une fois connecté
     case "admin":
         include "controleur/controleurAdmin.php";
         break;

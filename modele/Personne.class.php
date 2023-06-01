@@ -1,5 +1,15 @@
 <?php
-class Personne{
+class Personne{    
+    /**
+     * Ajoute une personne
+     *
+     * @param  mixed $nom
+     * @param  mixed $prenom
+     * @param  mixed $tel
+     * @param  mixed $mail
+     * @param  mixed $adresse
+     * @return void
+     */
     public static function insertPersonne(string $nom, string $prenom, string $tel, string $mail, string $adresse){
 
         $req = MonPdo::getInstance() -> prepare("INSERT INTO personne (nom, prenom, tel, mail, adresse) VALUES (:nom, :prenom, :tel, :mail, :adresse)");
@@ -13,7 +23,12 @@ class Personne{
         $req -> execute();
 
     }
-
+    
+    /**
+     * getLastId
+     *
+     * @return int
+     */
     public static function getLastId(): int{
 
         $id = 0;

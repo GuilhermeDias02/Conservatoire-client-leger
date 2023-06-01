@@ -18,7 +18,12 @@ class Seance{
 
         $req -> execute();
     }*/
-
+    
+    /**
+     * Affiche toutes les séances
+     *
+     * @return array
+     */
     public static function afficherTous(){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM seance");
         $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'seance');
@@ -27,7 +32,13 @@ class Seance{
 
         return $lesResultats;
     }
-
+    
+    /**
+     * Affiche un prof en fonction d'un id
+     *
+     * @param  int $unIdProf
+     * @return array
+     */
     public static function afficherProf(int $unIdProf){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM seance WHERE idprof = :idprof");
         $req -> bindParam('idprof', $idProf, PDO::PARAM_INT);
@@ -37,9 +48,12 @@ class Seance{
 
         return $lesResultats;
     }
-
+    
     /**
      * Renvoie la capacité de la séance
+     *
+     * @param  int $unNumSeance
+     * @return mixed
      */
     public static function afficherCapacite(int $unNumSeance){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM seance WHERE numseance = :numseance");
@@ -54,7 +68,13 @@ class Seance{
 
         return $capacite;
     }
-
+    
+    /**
+     * Affiche le niveau d'une séance
+     *
+     * @param  int $unNumSeance
+     * @return mixed
+     */
     public static function afficherNiveau(int $unNumSeance){
         $req = MonPdo::getInstance() -> prepare("SELECT * FROM seance WHERE numseance = :numseance");
         $req -> bindParam('numseance', $unNumSeance, PDO::PARAM_INT);
