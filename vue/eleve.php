@@ -24,6 +24,14 @@
             <input type="text" class="form-control" id="adresse" name="adresse" placeholder="">
         </div>
         <div class="mb-3">
+            <label for="codePostal" class="form-label">Le code Postal</label>
+            <input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="">
+        </div>
+        <div class="mb-3">
+            <label for="ville" class="form-label">La ville</label>
+            <input type="text" class="form-control" id="ville" name="ville" placeholder="">
+        </div>
+        <div class="mb-3">
             <label for="niveau" class="form-label">Son niveau</label>
             <input type="text" class="form-control" id="niveau" name="niveau" placeholder="1 / 2 / 3 / 4">
         </div>

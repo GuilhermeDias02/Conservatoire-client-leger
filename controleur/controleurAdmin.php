@@ -53,16 +53,18 @@ switch($choix){
         include 'modele/Eleve.class.php';
         include 'modele/Personne.class.php';
 
-        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel']) && isset($_POST['mail']) && isset($_POST['adresse']) && isset($_POST['niveau']) && isset($_POST['bourse'])){
+        if (isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['tel']) && isset($_POST['mail']) && isset($_POST['adresse']) && isset($_POST['codePostal']) && isset($_POST['ville']) && isset($_POST['niveau']) && isset($_POST['bourse'])){
 
             $nom = $_POST['nom'];
             $prenom = $_POST['prenom'];
             $tel = $_POST['tel'];
             $mail = $_POST['mail'];
             $adresse = $_POST['adresse'];
+            $codePostal = $_POST['codePostal'];
+            $vile = $_POST['ville'];
 
             // Creation de la personne
-            Personne::insertPersonne($nom, $prenom, $tel, $mail, $adresse);
+            Personne::insertPersonne($nom, $prenom, $tel, $mail, $adresse, $codePostal, $ville);
 
             $id = Personne::getLastId();
             $niveau = $_POST['niveau'];
@@ -72,7 +74,7 @@ switch($choix){
 
             include 'vue/reussite.php';
 
-            echo 'fujabfoa';
+            // echo 'fujabfoa';
 
         }
         else{
@@ -138,4 +140,38 @@ switch($choix){
             
         }
         break;
+    
+    case 'stats':
+        include 'modele/Eleve.class.php';
+
+        $nbrEleves = Eleve::compterEleves();
+
+        if (isset($_POST['codePostal'])){
+            $code = $_POST['codePostal'];
+            echo $code;
+
+            if (strlen($code) >= 2){
+                $code12 += $code[0];
+                $code12 += $code[1];
+                $nbrElevesDep = Eleve::compterElevesDep($code12);
+
+                include "vue/headerAccueil.php";
+                include "vue/stats.php"; 
+            }
+        }
+
+        if(isset($code)){
+            if (strlen($code) < 2){
+                include 'vue/echec.php';
+            }
+            else{
+                include "vue/headerAccueil.php";
+                include "vue/stats.php"; 
+            }
+        }
+        else{
+            include "vue/headerAccueil.php";
+            include "vue/stats.php";
+        }
+
 }

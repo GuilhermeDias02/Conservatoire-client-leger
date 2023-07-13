@@ -18,6 +18,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="index.php?uc=admin&choix=accueilInscription">Inscrire à un cours</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.php?uc=admin&choix=stats">Statistiques</a>
+                </li>
             </ul>
             <!-- <form class="d-flex" role="search" action="index.php?uc=bonbons&action=recherche" method="POST">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="recherche">

@@ -7,6 +7,8 @@ class Eleve{
     private string $tel;
     private string $mail;
     private string $adresse;
+    private string $codePostal;
+    private string $ville;
     private string $niveau;
     private string $bourse;
     
@@ -63,6 +65,33 @@ class Eleve{
         return $eleve;
     }
 
+    public static function compterEleves(){
+        $req = MonPdo::getInstance() -> prepare("SELECT Count(*) FROM veleve");
+        $req -> setFetchMode(PDO::FETCH_BOTH);
+        $req -> execute();
+        $nbrA = $req -> fetch();
+
+        foreach($nbrA as $nbr){
+            $nbr = $nbrA;
+        }
+
+        return $nbr;
+    }
+
+    public static function compterElevesDep(string $codeDep){
+        $req = MonPdo::getInstance() -> prepare("SELECT Count(*) FROM veleve where codepostal like ':codeDep%'");
+        $req -> bindParam('codeDep', $codeDep, PDO::PARAM_STR);
+        $req -> setFetchMode(PDO::FETCH_BOTH);
+        $req -> execute();
+        $nbrA = $req -> fetch();
+
+        foreach($nbrA as $nbr){
+            $nbr = $nbrA;
+        }
+
+        return $nbr;
+    }
+
     public static function deconnexion(){
         session_unset();
         //session_destroy();
@@ -112,5 +141,37 @@ class Eleve{
 
     public function getBourse(): string {
 		return $this->bourse;
+	}
+
+	/**
+	 * @return 
+	 */
+	public function getCodePostal(): string {
+		return $this->codePostal;
+	}
+	
+	/**
+	 * @param  $codePostal 
+	 * @return self
+	 */
+	public function setCodePostal(string $codePostal): self {
+		$this->codePostal = $codePostal;
+		return $this;
+	}
+
+    /**
+	 * @return 
+	 */
+	public function getVille(): string {
+		return $this->ville;
+	}
+	
+	/**
+	 * @param  $ville
+	 * @return self
+	 */
+	public function setVille(string $ville): self {
+		$this->ville = $ville;
+		return $this;
 	}
 }
