@@ -1,6 +1,7 @@
 <?php
-class Admin{
-        
+class Admin
+{
+
     /**
      * Vérifie que la personne peut se connecter
      *
@@ -8,24 +9,24 @@ class Admin{
      * @param  string $mdp
      * @return bool
      */
-    public static function verifier($login, $mdp){
-        $req = MonPdo::getInstance() -> prepare("SELECT * FROM admin WHERE login=:login AND mdp=:mdp");
+    public static function verifier($login, $mdp)
+    {
+        $req = MonPdo::getInstance()->prepare("SELECT * FROM admin WHERE login=:login AND mdp=:mdp");
 
-        $req -> setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'admin');
+        $req->setFetchMode(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, 'admin');
 
-        $req -> bindParam('login', $login);
-        $req -> bindParam('mdp', $mdp);
+        $req->bindParam('login', $login);
+        $req->bindParam('mdp', $mdp);
 
-        $req -> execute();
+        $req->execute();
 
-        $leResultat = $req -> fetchAll();
+        $leResultat = $req->fetchAll();
 
         $nb_lignes = count($leResultat);
 
-        if ($nb_lignes == 0){
+        if ($nb_lignes == 0) {
             $rep = false;
-        }
-        else{
+        } else {
             $rep = true;
         }
 
@@ -37,7 +38,8 @@ class Admin{
      *
      * @return void
      */
-    public static function deconnexion(){
+    public static function deconnexion()
+    {
         session_unset();
         //session_destroy();
     }

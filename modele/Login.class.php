@@ -1,14 +1,16 @@
 <?php
 
-class Login{
-    
+class Login
+{
+
     /**
      * Récupères les comptes grâce à l'api
      *
      * @return mixed
      */
-    public static function recupJson(){
-                
+    public static function recupJson()
+    {
+
         $url = "https://guilherme-de-oliveira.efrei.me/Api-Conservatoire/identifiants";
 
         $html = file_get_contents($url);
@@ -18,7 +20,7 @@ class Login{
         return $json;
 
     }
-    
+
     /**
      * Vérifie que la personne peut se connecter
      *
@@ -27,16 +29,17 @@ class Login{
      * @param  array $json
      * @return bool
      */
-    public static function verifLogin(string $identifiant, string $motDePasse, array $json){
+    public static function verifLogin(string $identifiant, string $motDePasse, array $json)
+    {
 
         $res = false;
 
-        foreach($json as $cpt){
+        foreach ($json as $cpt) {
             $login = $cpt['1'];
             $mdp = $cpt['2'];
         }
 
-        if($identifiant == $login && $motDePasse == $mdp){
+        if ($identifiant == $login && $motDePasse == $mdp) {
             $res = true;
         }
 

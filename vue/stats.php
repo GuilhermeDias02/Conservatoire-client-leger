@@ -1,15 +1,19 @@
 <div class="contenu">
-    <h1>Nombre d'adhérents: <?php 
-        if (isset($nbrEleves)){
+    <h1>Nombre d'adhérents:
+        <?php
+        if (isset($nbrEleves)) {
             echo $nbrEleves;
         }
-    ?></h1>
+        ?>
+    </h1>
 
-    <h1>Nombres d'adhérents d'un département: <?php 
-        if (isset($nbrElevesDep)){
+    <h1>Nombres d'adhérents d'un département:
+        <?php
+        if (isset($nbrElevesDep)) {
             echo $nbrElevesDep;
         }
-    ?></h1>
+        ?>
+    </h1>
     <br>
 
     <form action="index.php?uc=admin&choix=stats" method="POST" enctype="multipart/form-data">

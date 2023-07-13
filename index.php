@@ -2,19 +2,18 @@
 include "vue/header.php";
 include "modele/monPdo.php";
 
-if($_SESSION['autorisation'] == 'OK'){
+if ($_SESSION['autorisation'] == 'OK') {
     $uc = 'admin';
 }
 
 // Si rien n'est encore défini alors uc = login
-if(empty($_GET["uc"])){
+if (empty($_GET["uc"])) {
     $uc = "login";
-}
-else{
+} else {
     $uc = $_GET["uc"];
 }
 
-switch($uc){
+switch ($uc) {
     // vue de connexion
     case "login":
         include "vue/login.php";

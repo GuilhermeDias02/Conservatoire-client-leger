@@ -8,9 +8,9 @@
             <select id="prof" name="prof" class="form-select" aria-label="Default select example">
                 <option selected></option>
                 <?php
-                    foreach($lesProfs as $unProf){
-                        echo '<option value="'.$unProf->getId().'">'.$unProf->getNom().' '.$unProf->getPrenom().', '.$unProf->getInstrument().'</option>';
-                    }
+                foreach ($lesProfs as $unProf) {
+                    echo '<option value="' . $unProf->getId() . '">' . $unProf->getNom() . ' ' . $unProf->getPrenom() . ', ' . $unProf->getInstrument() . '</option>';
+                }
                 ?>
             </select>
         </div>
@@ -28,9 +28,9 @@
             <select id="eleve" name="eleve" class="form-select" aria-label="Default select example">
                 <option selected></option>
                 <?php
-                    foreach($lesEleves as $unEleve){
-                        echo '<option value="'.$unEleve->getId().'">'.$unEleve->getNom().' '.$unEleve->getPrenom().'</option>';
-                    }
+                foreach ($lesEleves as $unEleve) {
+                    echo '<option value="' . $unEleve->getId() . '">' . $unEleve->getNom() . ' ' . $unEleve->getPrenom() . '</option>';
+                }
                 ?>
             </select>
         </div>

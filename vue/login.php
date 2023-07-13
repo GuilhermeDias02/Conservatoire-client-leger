@@ -5,9 +5,11 @@
         <div class="col-2">
             <form action="index.php?uc=admin&choix=verif" method="POST">
                 </br>
-                <div class="row"><input class="form-control" type="text" placeholder="Nom d'utilisateur" name="login"></div>
+                <div class="row"><input class="form-control" type="text" placeholder="Nom d'utilisateur" name="login">
+                </div>
                 </br>
-                <div class="row"><input class="form-control" type="password" placeholder="Mot de passe" name="mdp"></div>
+                <div class="row"><input class="form-control" type="password" placeholder="Mot de passe" name="mdp">
+                </div>
                 </br>
                 <div class="row"><input class="btn btn-primary" type="submit"></div>
             </form>
